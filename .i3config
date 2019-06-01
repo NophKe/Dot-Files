@@ -1,0 +1,275 @@
+#vim: filetype=i3
+#
+#
+
+
+# assign [class="vlc"] $ws2
+# assign [class="Firefox"] $ws3
+exec --no-startup-id "feh --bg-scale /home/nono/DOCS/Images/Musiciens\ et\ groupes/Sigur\ Ros/wallpaper30-800.jpg"
+
+#bindsym $mod+F1 exec midori 
+bindsym Print exec scrot /home/nono/`date +%Y-%m-%d_%H:%M:%S`.png
+
+# Gives a nice border so that focus is easy to follow
+for_window [class="^.*"] border pixel 4
+
+
+
+#
+#
+
+# Switch of the focus following the mouse pointer
+#focus_follows_mouse no
+
+# Set up gaps between screens
+gaps inner 18
+gaps outer 07
+
+# disables the gaps when only one window on workspace
+ smart_gaps on
+
+# This are the defaults colors...
+#
+# class                 border  backgr. text    indicator child_border
+client.focused          #4D7999 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
+
+
+# Warning this next line sets the gaps/separations between the windows to be
+# vertical, meaning yours windows are gonna be streched horizontally, this makes 
+# X terminals easier to use
+#default_orientation vertical
+
+# 
+# workspace_layout tabbed
+
+# disables the borders when only one window on workspace
+hide_edge_borders both
+
+# Compton is a decorator giving you shadows under windows
+# exec --no-startup-id compton -b
+
+# doesn't seem to work...
+exec --no-startup-id numlockx
+
+# see "man feh"
+# exec --no-startup-id ~/.fehbg
+
+# Systray
+exec --no-startup-id volumeicon
+exec --no-startup-id nm-applet
+exec --no-startup-id cbatticon
+
+# kill focusEd window
+bindsym $mod+q kill
+bindsym $Alt_L+F4 kill
+
+# Physical button on my actual laptop
+bindsym XF86WWW exec firefox
+bindsym Ctrl+\,	exec brave 
+
+# On an azerty keyboard these are the closest keys from windows key
+bindsym $mod+w exec firefox
+bindsym $mod+x exec nemo
+bindsym $mod+c exec gvim
+
+#
+bindsym $mod+b border toggle
+bindsym XF86Launch1 exec xkill
+bindsym $mod+Tab exec rofi -show window
+bindsym $mod+Alt_L exec rofi -show run
+bindsym XF86Bluetooth exec rofi -show drun
+
+# Sets the Windows key to be the modifier
+set $mod Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+#font pango:monospace 9
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:DejaVu Sans Mono 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec vte-2.91 --reverse
+bindsym $mod+space exec vte-2.91 --reverse
+
+
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+m focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+m move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+# bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+# bindsym $mod+q focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+
+
+# Créer des variables pour changer facilement le nom des bureaux virtuels.
+
+set $ws1 "1" 
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+
+# switch to workspace with no need to shift or use num pad
+# on azerty keyboards
+
+bindsym $mod+ampersand workspace $ws1
+bindsym $mod+eacute workspace $ws2
+bindsym $mod+quotedbl workspace $ws3
+bindsym $mod+apostrophe workspace $ws4
+bindsym $mod+parenleft workspace $ws5
+
+# bindsym $mod+parentleft exec i3-msg 'workspace $ws5 '
+
+bindsym $mod+minus workspace $ws6
+bindsym $mod+egrave workspace $ws7
+bindsym $mod+underscore workspace $ws8
+bindsym $mod+ccedilla workspace $ws9
+bindsym $mod+agrave workspace $ws10
+
+
+
+# move focused container to workspace
+# bindsym Shift+1 move container to workspace $ws1 
+# bindsym Shift+2 move container to workspace $ws2
+# bindsym Shift+3 move container to workspace $ws3
+# bindsym Shift+4 move container to workspace $ws4
+# bindsym Shift+5 move container to workspace $ws5
+# bindsym Shift+6 move container to workspace $ws6
+# bindsym Shift+7 move container to workspace $ws7
+# bindsym Shift+8 move container to workspace $ws8
+# bindsym Shift+9 move container to workspace $ws9
+# bindsym Shift+0 move container to workspace $ws10
+
+
+# move focused container to workspace
+bindsym $mod+Shift+ampersand move container to workspace $ws1 
+bindsym $mod+Shift+eacute move container to workspace $ws2
+bindsym $mod+Shift+quotedbl move container to workspace $ws3
+bindsym $mod+Shift+apostrophe move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+minus move container to workspace $ws6
+bindsym $mod+Shift+egrave move container to workspace $ws7
+bindsym $mod+Shift+underscore move container to workspace $ws8
+bindsym $mod+Shift+ccedilla move container to workspace $ws9
+bindsym $mod+Shift+agrave move container to workspace $ws10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exit
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym m resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+	# if resize mode by mistake switch with same binding again 
+	bindsym $mod+r mode "default"
+	}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	position bottom 
+        status_command i3status
+	separator_symbol " ⬖ "
+	workspace_buttons yes 
+	strip_workspace_numbers yes
+	
+	colors  {
+		SEPARATOR #ff0000
+		background #000000
+		statusline #AAFFAA
+		focused_workspace #000000 #FFCCCC
+		active_workspace #E5E5E5 #5697B2
+		inactive_workspace #000000 #5697B2
+		urgent_workspace #E5E5E5 #BC9B54
+		}
+	}
